@@ -1,17 +1,57 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Header />
+    <br />
+    <addtodo v-on:new-todo="addTodo" />
+    <br />
+    <Todos v-bind:todos="todos" v-on:del-it="deleteit"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import Todos from './components/Todos.vue';
+import Header from './components/layout/Header.vue';
+import Addtodo from './components/Addtodo.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Todos,
+    Header,
+    Addtodo
+  },
+  data (){
+    return {
+      todos:[
+        {
+          id:1,
+          title: 'Learn Vue.js',
+          completed: false,
+          showEdit: false,
+        },
+        {
+          id:2,
+          title: 'Master Vue.js',
+          completed: false,
+          showEdit: false,
+        },
+        {
+          id:3,
+          title: 'Build An App',
+          completed: false,
+          showEdit: false,
+        }
+      ]
+    }
+  },
+  methods:{
+    deleteit(id){
+      this.todos = this.todos.filter(todo => todo.id !== id );
+    },
+    addTodo(newtodo){
+      this.todos.push(newtodo);
+    },
   }
 }
 </script>
@@ -23,6 +63,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 0px;
 }
 </style>
