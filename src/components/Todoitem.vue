@@ -1,14 +1,42 @@
 <template>
-    <div class="todoitem" v-bind:class="{'is-completed':todo.completed}">
-
-        <input type="checkbox" v-if="!todo.showEdit" v-on:click="completed">
-        <p v-if="!todo.showEdit">{{todo.title}}</p>
-        <input type="text" name="edit" v-if="todo.showEdit" v-model="todo.title" >
-        <input type="button" class="save-btn" value="save" v-if="todo.showEdit" @click="save">
-        <input type="button" class="edit-btn" value="Edit" v-if="!todo.showEdit" @click="showEdit">
-        <input type="button" class="delete-btn" value="Delete" @click="$emit('del-it' , todo.id)">
-      
-    </div>
+    
+        <tr>
+        <td v-if="!todo.showEdit">
+          <v-checkbox v-on:click.native="completed"></v-checkbox>
+        </td>
+        <td>
+          <p 
+          v-bind:class="{'is-completed':todo.completed}"
+          v-if="!todo.showEdit" 
+          class="title blue--text text--darken-4"
+          >
+              {{todo.title}}
+          </p>
+        </td>
+        <td v-if="todo.showEdit">
+         <v-text-field v-model="todo.title"></v-text-field>
+        </td>
+        <td v-if="todo.showEdit">
+         <v-btn fab color="success"  @click="save">
+            <v-icon>
+              mdi-note-plus
+            </v-icon>
+          </v-btn>
+        </td>
+        <td v-if="!todo.showEdit">
+          <v-btn fab color="primary"  @click="showEdit">
+            <v-icon>
+              mdi-pencil
+            </v-icon>
+          </v-btn>
+        </td>
+        <td>
+          <v-btn fab color="error" @click="$emit('del-it' , todo.id)">
+           <v-icon>mdi-delete</v-icon>
+          </v-btn>
+        </td>
+      </tr>
+ 
 </template>
 
 <script>

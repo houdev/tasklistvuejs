@@ -1,8 +1,12 @@
 <template>
     <div class="header">
-
-        <h1>Task List</h1>
-        
+        <v-app-bar
+        color="deep-purple accent-4"
+        dense
+        dark
+        >
+        <v-toolbar-title>Task List</v-toolbar-title>
+        </v-app-bar>
     </div>    
 </template>
 
@@ -13,10 +17,5 @@ export default {
 </script>
 
 <style scoped>
-.header{
-    background: #333;
-    color:white;
-    text-align: center;
-    padding: 10px;
-}
+
 </style>

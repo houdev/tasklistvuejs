@@ -1,11 +1,15 @@
 <template>
-  <div id="app">
-    <Header />
-    <br />
-    <addtodo v-on:new-todo="addTodo" />
-    <br />
-    <Todos v-bind:todos="todos" v-on:del-it="deleteit"/>
-  </div>
+  <v-app>
+    <v-row justify="center" align="center"> 
+      <v-col cols="6">
+        <Header />
+        <br />
+        <addtodo v-on:new-todo="addTodo" />
+        <br />
+        <Todos v-bind:todos="todos" v-on:del-it="deleteit"/>
+      </v-col>
+    </v-row>
+  </v-app>
 </template>
 
 <script>
@@ -58,11 +62,6 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 0px;
+ 
 }
 </style>

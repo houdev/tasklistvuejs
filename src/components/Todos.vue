@@ -1,10 +1,25 @@
 <template>
     <div id="Todos">
-        <div v-bind:key="todo.id" v-for="todo in todos">
 
-           <Todoitem v-bind:todo="todo" v-on:del-it="$emit('del-it', todo.id)" />
+        <v-simple-table>
+    <template v-slot:default>
+      <thead>
+        <tr>
+          <th class="text-left">Mark it Done</th>
+          <th class="text-left">Title</th>
+          <th class="text-left">Edit</th>
+          <th class="text-left">Delete</th>
+        </tr>
+      </thead>
+        <tbody>
+            
 
-        </div>
+            <Todoitem v-bind:key="todo.id" v-for="todo in todos" v-bind:todo="todo" v-on:del-it="$emit('del-it', todo.id)"  />
+
+           
+        </tbody>
+        </template>
+  </v-simple-table>
     </div>
 </template>
 
